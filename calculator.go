@@ -3,6 +3,7 @@ package calculator
 
 import (
 	"errors"
+	"math"
 )
 
 // Add takes two numbers and returns the result of adding them together.
@@ -27,4 +28,11 @@ func Divide(a, b float64) (float64, error) {
 		return 0, errors.New("cannot divide by zero")
 	}
 	return a / b, nil
+}
+
+func Sqrt(a float64) (float64, error) {
+	if a < 0 {
+		return 0, errors.New("cannot square root negative numbers")
+	}
+	return math.Sqrt(a), nil
 }

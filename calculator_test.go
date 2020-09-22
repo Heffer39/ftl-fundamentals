@@ -106,3 +106,23 @@ func TestAddRandom(t *testing.T) {
 		}*/
 	}
 }
+
+func TestSqrt(t *testing.T) {
+	t.Parallel()
+	testCases := []testCase{
+		{a: 4, want: 2, name: "square root of 4", errExpected: false},
+		{a: 16, want: 4, name: "square root of 8", errExpected: false},
+		{a: 100, want: 10, name: "square root of 100", errExpected: false},
+		{a: -4, name: "square root of -4", errExpected: true},
+		{a: 0, want: 0, name: "square root of 0", errExpected: false},
+	}
+
+	for _, tc := range testCases {
+		got, err := calculator.Sqrt(tc.a)
+		if (err != nil) != tc.errExpected {
+			t.Errorf("%s - error: %s", tc.name, err)
+		} else if tc.want != got {
+			t.Errorf("%s want %f, got %f", tc.name, tc.want, got)
+		}
+	}
+}
